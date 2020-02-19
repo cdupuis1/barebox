@@ -44,6 +44,7 @@
 #include <environment.h>
 #include <linux/ctype.h>
 #include <watchdog.h>
+#include "chad.h"
 
 extern initcall_t __barebox_initcalls_start[], __barebox_early_initcalls_end[],
 		  __barebox_initcalls_end[];
@@ -391,7 +392,7 @@ void __noreturn start_barebox(void)
 		barebox_main();
 
 	if (IS_ENABLED(CONFIG_SHELL_NONE)) {
-		pr_err("Nothing left to do\n");
+		chad_main();
 		hang();
 	} else {
 		while (1)
